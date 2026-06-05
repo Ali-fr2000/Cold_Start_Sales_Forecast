@@ -259,7 +259,7 @@ If you use this pipeline in research, please cite:
 @thesis{ghassemi2026coldstart,
   title={Cold-Start Sales Forecasting Using K-Medoids and KNN},
   author={Ghassemi, Mirali},
-  school={Université de Lorraine},
+  school={Politecnico di Milano},
   year={2026},
   note={MSc Thesis - Supply Chain Analytics}
 }
