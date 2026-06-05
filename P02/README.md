@@ -27,27 +27,27 @@ This pipeline implements an alternative clustering-based machine learning approa
 ┌─────────────────────────────────────────────────────────────┐
 │                    Data Loading & Prep                      │
 ├─────────────────────────────────────────────────────────────┤
-│  • Temporal filtering (first 8 weeks)                        │
-│  • Feature engineering (price index, substitutability)       │
-│  • Inflation adjustment                                      │
+│  • Temporal filtering (first 8 weeks)                       │
+│  • Feature engineering (price index, substitutability)      │
+│  • Inflation adjustment                                     │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
-│         Temporal Splits (Train / Val / Test)                 │
+│         Temporal Splits (Train / Val / Test)                │
 ├─────────────────────────────────────────────────────────────┤
-│  • Chronological split by product launch date                │
-│  • Train: 60%, Validation: 20%, Test: 20%                   │
+│  • Chronological split by product launch date               │
+│  • Train: 64%, Validation: 16%, Test: 20%                   │
 └─────────────────────────────────────────────────────────────┘
                            ↓
 ┌─────────────────────────────────────────────────────────────┐
-│         K-Medoids Clustering (Training Products)             │
+│         K-Medoids Clustering (Training Products)            │
 ├─────────────────────────────────────────────────────────────┤
-│  • Uses PAM (Partitioning Around Medoids) algorithm          │
-│  • More robust than K-Means to outliers                      │
-│  • Selects actual data points as cluster centers             │
+│  • Uses PAM (Partitioning Around Medoids) algorithm         │
+│  • More robust than K-Means to outliers                     │
+│  • Selects actual data points as cluster centers            │
 └─────────────────────────────────────────────────────────────┘
                            ↓
-┌─────────────��───────────────────────────────────────────────┐
+┌──────────────────────────────────────────────────────────────┐
 │  KNN Classifier: Predict Cluster (New Products)              │
 ├─────────────────────────────────────────────────────────────┤
 │  • Learns cluster membership from training set               │
@@ -127,8 +127,8 @@ n_neighbors_list = [3, 5, 7, 9, 11]    # Number of neighbors for KNN
 # Finds optimal (k, n_neighbors) using validation set
 all_detailed_val_results, sorted_results, opt_k, opt_n_neighbors, opt_detailed_val_results = wrapper(...)
 ```
-- Trains on 60% historical products
-- Validates on 20% new products (intermediate launch dates)
+- Trains on 64% historical products
+- Validates on 16% new products (intermediate launch dates)
 - Returns top performing configurations
 
 ### Section 11: Test Phase
